@@ -1,0 +1,17 @@
+{
+  "/*": "Don't modify slug - If required, do it using cli edit command",
+  "name": "Sendgrid",
+  "slug": "sendgrid",
+  "type": "sendgrid_other_calendar",
+  "logo": "logo.png",
+  "url": "https://TODO-your-domain.example/",
+  "variant": "other_calendar",
+  "categories": [
+    "other"
+  ],
+  "publisher": "Slottr",
+  "email": "support@TODO-your-domain.example",
+  "description": "SendGrid delivers your transactional and marketing emails through the world's largest cloud-based email delivery platform.",
+  "__createdUsingCli": true,
+  "isOAuth": false
+}
