@@ -1,0 +1,30 @@
+{
+  "/*": "Don't modify slug - If required, do it using cli edit command",
+  "name": "Plausible",
+  "slug": "plausible",
+  "type": "plausible_analytics",
+  "logo": "icon.svg",
+  "url": "https://TODO-your-domain.example/",
+  "variant": "analytics",
+  "categories": [
+    "analytics"
+  ],
+  "publisher": "Slottr",
+  "email": "support@TODO-your-domain.example",
+  "extendsFeature": "EventType",
+  "appData": {
+    "tag": {
+      "scripts": [
+        {
+          "src": "{PLAUSIBLE_URL}",
+          "attrs": {
+            "data-domain": "{TRACKING_ID}"
+          }
+        }
+      ]
+    }
+  },
+  "description": "Simple, privacy-friendly Google Analytics alternative.",
+  "__createdUsingCli": true,
+  "isOAuth": false
+}
