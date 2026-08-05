@@ -1,0 +1,4 @@
+{
+  "projectId": "TODO_SNAPLET_PROJECT_ID",
+  "targetDatabaseUrl": "postgresql://postgres@localhost:5450/app_db"
+}
