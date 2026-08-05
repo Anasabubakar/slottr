@@ -1,0 +1,18 @@
+{
+  "/*": "Don't modify slug - If required, do it using cli edit command",
+  "name": "QR Code",
+  "slug": "qr_code",
+  "type": "qr_code_other",
+  "logo": "icon.svg",
+  "url": "https://TODO-your-domain.example/",
+  "variant": "other",
+  "categories": [
+    "other"
+  ],
+  "extendsFeature": "EventType",
+  "publisher": "Slottr",
+  "email": "support@TODO-your-domain.example",
+  "description": "Easily generate a QR code for your links to print, share, or embed.",
+  "__createdUsingCli": true,
+  "isOAuth": false
+}
