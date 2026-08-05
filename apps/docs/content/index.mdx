@@ -1,0 +1,115 @@
+import { Callout } from "nextra/components";
+
+# Slottr Self-Hosting Documentation
+
+<Callout type="warning">
+  **Use at your own risk.** Slottr is an independent, self-hosted scheduling
+  platform, originally forked from Cal.com's open-source (non-enterprise)
+  codebase. **It is strictly recommended for personal, non-production use**
+  until you've reviewed and replaced the TODO placeholders throughout this
+  repo. Self-hosting requires advanced knowledge of server administration,
+  database management, and securing sensitive data. Proceed only if you are
+  comfortable with these responsibilities.
+</Callout>
+
+## Getting Started
+
+- [Installation](/installation) - Learn how to install and set up Slottr
+- [Database Migrations](/database-migrations) - Manage database schema changes
+- [Upgrading](/upgrading) - Keep your instance up to date
+- [Docker](/docker) - Deploy with Docker
+- [Apps](/apps/google) - Set up third-party integrations
+
+## Deployments
+
+Deploy Slottr on your preferred platform:
+
+- [AWS](/deployments/aws)
+- [Azure](/deployments/azure)
+- [Elestio](/deployments/elestio)
+- [GCP](/deployments/gcp)
+- [Northflank](/deployments/northflank)
+- [Railway](/deployments/railway)
+- [Render](/deployments/render)
+- [Vercel](/deployments/vercel)
+
+## Differences from Cal.com
+
+Slottr started as a fork of Cal.com's open-source (non-enterprise) codebase, with all Enterprise Edition
+features removed. It is an independent project — not affiliated with, endorsed by, or supported by Cal.com, Inc.
+Slottr is community maintained and strictly recommended for personal, non-production use. Please use at your own risk.
+
+Find the feature differences inherited from that fork below (summarized):
+
+| Feature                                                        | Slottr | Cal.com |
+|--------------------------------------------------------------- |:-------:|:-------:|
+| **SCHEDULING & BOOKINGS**                                      |         |         |
+| Event Types                                                    |   ✅    |   ✅    |
+| Recurring Event Types                                          |   ✅    |   ✅    |
+| Seated Events                                                  |   ✅    |   ✅    |
+| Paid Events (Stripe/PayPal)                                    |   ✅    |   ✅    |
+| Private Links (Hashed URLs)                                    |   ✅    |   ✅    |
+| Booking Management                                             |   ✅    |   ✅    |
+| Teams                                                          |   ❌    |   ✅    |
+| Team Event Types (Round-Robin)                                 |   ❌    |   ✅    |
+| Team Event Types (Collective)                                  |   ❌    |   ✅    |
+| Managed Event Types                                            |   ❌    |   ✅    |
+| Instant Meeting                                                |   ❌    |   ✅    |
+| Organizations                                                  |   ❌    |   ✅    |
+| **AVAILABILITY**                                               |         |         |
+| Availability Schedules                                         |   ✅    |   ✅    |
+| Date Overrides                                                 |   ✅    |   ✅    |
+| Buffer Times                                                   |   ✅    |   ✅    |
+| Minimum Notice / Booking Limits                                |   ✅    |   ✅    |
+| Travel Schedules                                               |   ✅    |   ✅    |
+| Out-of-Office (OOO)                                            |   ✅    |   ✅    |
+| **CALENDAR INTEGRATIONS**                                      |         |         |
+| Google Calendar                                                |   ✅    |   ✅    |
+| Outlook / Office 365 Calendar                                  |   ✅    |   ✅    |
+| Apple Calendar                                                 |   ✅    |   ✅    |
+| CalDAV                                                         |   ✅    |   ✅    |
+| Lark Calendar                                                  |   ✅    |   ✅    |
+| Feishu Calendar                                                |   ✅    |   ✅    |
+| Zoho Calendar                                                  |   ✅    |   ✅    |
+| Exchange Calendar                                              |   ✅    |   ✅    |
+| ICS Feed Calendar                                              |   ✅    |   ✅    |
+| **VIDEO & CONFERENCING**                                       |         |         |
+| Cal Video (Daily.co)                                           |   ✅    |   ✅    |
+| Zoom                                                           |   ✅    |   ✅    |
+| Google Meet                                                    |   ✅    |   ✅    |
+| Microsoft Teams                                                |   ✅    |   ✅    |
+| Webex                                                          |   ✅    |   ✅    |
+| Jitsi                                                          |   ✅    |   ✅    |
+| Other conferencing (Whereby, Huddle01, etc.)                   |   ✅    |   ✅    |
+| Cal.com Video Recordings                                       |   ❌    |   ✅    |
+| **AUTHENTICATION**                                             |         |         |
+| Email / Password Login                                         |   ✅    |   ✅    |
+| Google OAuth                                                   |   ✅    |   ✅    |
+| Azure AD / Microsoft OAuth                                     |   ✅    |   ✅    |
+| SAML SSO                                                       |   ❌    |   ✅    |
+| SCIM Directory Sync                                            |   ❌    |   ✅    |
+| Impersonation                                                  |   ❌    |   ✅    |
+| **AUTOMATION & INTEGRATIONS**                                  |         |         |
+| Webhooks                                                       |   ✅    |   ✅    |
+| Zapier                                                         |   ✅    |   ✅    |
+| n8n / Make / Pipedream                                         |   ✅    |   ✅    |
+| CRM (HubSpot / Salesforce / Close, etc.)                       |   ✅    |   ✅    |
+| Messaging (Discord, Telegram, WhatsApp, etc.)                  |   ✅    |   ✅    |
+| AI Agents (Retell AI, ElevenLabs, Synthflow, etc.)             |   ✅    |   ✅    |
+| Analytics (GA4, GTM, PostHog, Fathom, etc.)                    |   ✅    |   ✅    |
+| Workflows (Automations)                                        |   ❌    |   ✅    |
+| Routing Forms                                                  |   ❌    |   ✅    |
+| **EMBED & API**                                                |         |         |
+| Embed (Inline, Popup, Floating Button)                         |   ✅    |   ✅    |
+| API v2 (REST)                                                  |   ✅    |   ✅    |
+| API Keys                                                       |   ✅    |   ✅    |
+| Platform / OAuth Clients                                       |   ✅    |   ✅    |
+| API v1 (Legacy)                                                |   ❌    |   ✅    |
+| **ANALYTICS**                                                  |         |         |
+| Insights Dashboard                                             |   ❌    |   ✅    |
+| **ADVANCED / ENTERPRISE**                                      |         |         |
+| Attributes & Segments                                          |   ❌    |   ✅    |
+| Delegation                                                     |   ❌    |   ✅    |
+| Workspace Platform                                             |   ❌    |   ✅    |
+| Admin Panel                                                    |   ❌    |   ✅    |
+|            |  [Install](/installation)  |[Sign up](https://cal.com/signup)|
