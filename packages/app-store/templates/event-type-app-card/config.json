@@ -1,0 +1,17 @@
+{
+  "name": "EventType AppCard",
+  "slug": "event-type-app-card",
+  "type": "event-type-app-card_other",
+  "logo": "icon.svg",
+  "url": "https://example.com/link",
+  "variant": "other",
+  "categories": [
+    "other"
+  ],
+  "publisher": "Slottr",
+  "email": "support@TODO-your-domain.example",
+  "description": "A template showcasing how an app with EventType AppCard can be built e.g. Giphy, QR Code",
+  "extendsFeature": "EventType",
+  "isTemplate": true,
+  "__createdUsingCli": true
+}
