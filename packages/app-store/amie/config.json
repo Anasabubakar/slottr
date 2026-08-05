@@ -1,0 +1,25 @@
+{
+  "/*": "Don't modify slug - If required, do it using cli edit command",
+  "name": "Amie",
+  "slug": "amie",
+  "type": "amie_other",
+  "logo": "icon.svg",
+  "url": "https://TODO-your-domain.example",
+  "variant": "other",
+  "categories": [
+    "calendar"
+  ],
+  "publisher": "Slottr",
+  "email": "support@TODO-your-domain.example",
+  "description": "The joyful productivity app\r\r",
+  "__createdUsingCli": true,
+  "dependencies": [
+    "google-calendar"
+  ],
+  "dirName": "amie",
+  "isOAuth": false,
+  "externalLink": {
+    "url": "https://amie.so/signup",
+    "newTab": true
+  }
+}
