@@ -1,0 +1,25 @@
+{
+  "name": "@calcom/realtime",
+  "version": "0.0.1",
+  "description": "Lightweight WebSocket relay that notifies embed widgets when a booking page owner's calendar availability may have changed",
+  "author": "TODO_YOUR_NAME",
+  "license": "MIT",
+  "private": true,
+  "main": "./dist/server.js",
+  "scripts": {
+    "dev": "tsc -p tsconfig.json --watch --preserveWatchOutput & node --watch dist/server.js",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "type-check": "tsc --pretty --noEmit",
+    "type-check:ci": "tsc-absolute --pretty --noEmit"
+  },
+  "dependencies": {
+    "ws": "8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.23",
+    "@types/ws": "8.5.13",
+    "tsc-absolute": "1.0.0",
+    "typescript": "5.9.3"
+  }
+}
