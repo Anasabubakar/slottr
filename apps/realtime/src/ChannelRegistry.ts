@@ -1,5 +1,4 @@
 import type { WebSocket } from "ws";
-
 import type { SlotsChangedMessage } from "./types";
 
 /**

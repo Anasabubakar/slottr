@@ -1,3 +1,4 @@
+import process from "node:process";
 import logger from "../logger";
 
 const log = logger.getSubLogger({ prefix: ["notifyRealtimeSync"] });

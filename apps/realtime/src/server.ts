@@ -1,8 +1,7 @@
-import { createServer } from "node:http";
 import type { IncomingMessage, ServerResponse } from "node:http";
-
+import { createServer } from "node:http";
+import process from "node:process";
 import { WebSocketServer } from "ws";
-
 import { ChannelRegistry } from "./ChannelRegistry";
 import { isNotifyRequestBody } from "./types";
 
