@@ -1,3 +1,4 @@
+import type { NextApiRequest, NextApiResponse } from "next";
 import { createMocks } from "node-mocks-http";
 import { describe, it, expect, vi, afterEach } from "vitest";
 
@@ -16,7 +17,7 @@ describe("defaultHandler Test Suite", () => {
       method: "PATCH", // Unsupported method here
     });
 
-    await handler(req, res);
+    await handler(req as unknown as NextApiRequest, res as unknown as NextApiResponse);
 
     expect(res._getStatusCode()).toBe(405);
     expect(res._getJSONData()).toEqual({
@@ -27,7 +28,7 @@ describe("defaultHandler Test Suite", () => {
   it("should call the correct handler for a supported method", async () => {
     const getHandler = vi.fn().mockResolvedValue(null);
     const handlers = {
-      GET: { default: getHandler },
+      GET: Promise.resolve({ default: getHandler }),
     };
     const handler = defaultHandler(handlers);
 
@@ -35,7 +36,7 @@ describe("defaultHandler Test Suite", () => {
       method: "GET",
     });
 
-    await handler(req, res);
+    await handler(req as unknown as NextApiRequest, res as unknown as NextApiResponse);
 
     expect(getHandler).toHaveBeenCalledWith(req, res);
   });

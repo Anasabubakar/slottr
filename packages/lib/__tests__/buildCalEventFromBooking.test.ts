@@ -44,10 +44,12 @@ const createBooking = (overrides = {}) => ({
     title: "Test Event Type",
     seatsPerTimeSlot: 5,
     seatsShowAttendees: true,
+    hideOrganizerEmail: false,
+    customReplyToEmail: null,
     recurringEvent: {
       frequency: "daily",
       interval: 1,
-      endDate: new Date("2023-04-01T11:00:00Z"),
+      endDate: "2023-04-01T11:00:00Z",
     },
   },
   destinationCalendar: null,
@@ -69,6 +71,7 @@ describe("buildCalEventFromBooking", () => {
       return translate;
     });
 
+    // @ts-expect-error
     parseRecurringEvent.mockImplementation((recurringEvent) => {
       if (!recurringEvent) {
         return { parsed: true };
@@ -194,19 +197,20 @@ describe("buildCalEventFromBooking", () => {
   });
 
   it("should use user destination calendar when booking destination calendar is null", async () => {
+    const user = {
+      destinationCalendar: {
+        id: 1,
+        integration: "test-integration",
+        externalId: "external-id",
+        primaryEmail: "user@example.com",
+        userId: 1,
+        eventTypeId: 1,
+        credentialId: 1,
+      },
+    };
     const booking = createBooking({
       destinationCalendar: null,
-      user: {
-        destinationCalendar: {
-          id: 1,
-          integration: "test-integration",
-          externalId: "external-id",
-          primaryEmail: "user@example.com",
-          userId: 1,
-          eventTypeId: 1,
-          credentialId: 1,
-        },
-      },
+      user,
       iCalUID: "icaluid",
       iCalSequence: 0,
     });
@@ -218,8 +222,9 @@ describe("buildCalEventFromBooking", () => {
       organizer,
       location: "",
       conferenceCredentialId: null,
+      organizationId: null,
     });
 
-    expect(result.destinationCalendar).toEqual([booking.user.destinationCalendar]);
+    expect(result.destinationCalendar).toEqual([user.destinationCalendar]);
   });
 });

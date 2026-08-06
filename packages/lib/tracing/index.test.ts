@@ -287,7 +287,7 @@ describe("DistributedTracing", () => {
         meta: {
           userId: "user_789",
           requestId: null,
-        } as Record<string, string>,
+        } as unknown as Record<string, string>,
       };
 
       tracing.getTracingLogger(context);

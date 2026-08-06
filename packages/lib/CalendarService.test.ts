@@ -71,6 +71,7 @@ class TestCalendarService extends BaseCalendarService {
         teamId: null,
         appId: "caldav",
         invalid: false,
+        encryptedKey: null,
         key: {
           username: "test",
           password: "test",
@@ -90,7 +91,7 @@ class TestCalendarService extends BaseCalendarService {
         primary: true,
         readOnly: false,
         email: "test@example.com",
-        integrationName: "caldav",
+        integration: "caldav",
         credentialId: 1,
       },
     ];

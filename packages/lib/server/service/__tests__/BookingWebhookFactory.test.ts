@@ -29,8 +29,8 @@ const createTestBooking = (overrides?: Record<string, any>) => ({
   endTime: new Date("2025-01-24T11:00:00Z"),
   location: "https://meet.example.com",
   customInputs: { field1: "value1" },
-  responses: { name: { value: "Test User" } },
-  userFieldsResponses: { company: { value: "Test Corp" } },
+  responses: { name: { label: "name", value: "Test User" } },
+  userFieldsResponses: { company: { label: "company", value: "Test Corp" } },
   smsReminderNumber: "+1234567890",
   iCalUID: "ical-uid-123",
   ...overrides,
@@ -76,8 +76,8 @@ describe("BookingWebhookFactory", () => {
       expect(payload.endTime).toBe(booking.endTime.toISOString());
       expect(payload.location).toBe("https://meet.example.com");
       expect(payload.customInputs).toEqual({ field1: "value1" });
-      expect(payload.responses).toEqual({ name: { value: "Test User" } });
-      expect(payload.userFieldsResponses).toEqual({ company: { value: "Test Corp" } });
+      expect(payload.responses).toEqual({ name: { label: "name", value: "Test User" } });
+      expect(payload.userFieldsResponses).toEqual({ company: { label: "company", value: "Test Corp" } });
       expect(payload.smsReminderNumber).toBe("+1234567890");
       expect(payload.iCalUID).toBe("ical-uid-123");
       expect(payload.destinationCalendar).toEqual([]);
@@ -118,8 +118,14 @@ describe("BookingWebhookFactory", () => {
     it("should handle responses and userFieldsResponses", () => {
       const factory = new BookingWebhookFactory();
       const booking = createTestBooking();
-      const responses = { field1: "response1", field2: "response2" };
-      const userFieldsResponses = { company: "Test Corp", department: "Engineering" };
+      const responses = {
+        field1: { label: "field1", value: "response1" },
+        field2: { label: "field2", value: "response2" },
+      };
+      const userFieldsResponses = {
+        company: { label: "company", value: "Test Corp" },
+        department: { label: "department", value: "Engineering" },
+      };
 
       const payload = factory.createCancelledEventPayload({
         bookingId: booking.id,
@@ -133,7 +139,7 @@ describe("BookingWebhookFactory", () => {
         customInputs: null,
         responses,
         userFieldsResponses,
-        smsReminderNumber: null,
+        smsReminderNumber: undefined,
         iCalUID: null,
         organizer: createTestOrganizer(),
         attendees: [createTestAttendee()],
@@ -160,6 +166,7 @@ describe("BookingWebhookFactory", () => {
         createdAt: null,
         updatedAt: null,
         delegationCredentialId: null,
+        customCalendarReminder: null,
       };
 
       const payload = factory.createCancelledEventPayload({
@@ -174,7 +181,7 @@ describe("BookingWebhookFactory", () => {
         customInputs: null,
         responses: {},
         userFieldsResponses: {},
-        smsReminderNumber: null,
+        smsReminderNumber: undefined,
         iCalUID: null,
         organizer: createTestOrganizer(),
         attendees: [],
@@ -202,7 +209,7 @@ describe("BookingWebhookFactory", () => {
         customInputs: null,
         responses: {},
         userFieldsResponses: {},
-        smsReminderNumber: null,
+        smsReminderNumber: undefined,
         iCalUID: null,
         organizer: createTestOrganizer(),
         attendees: [],
@@ -260,7 +267,7 @@ describe("BookingWebhookFactory", () => {
         customInputs: null,
         responses: {},
         userFieldsResponses: {},
-        smsReminderNumber: null,
+        smsReminderNumber: undefined,
         iCalUID: null,
         organizer: createTestOrganizer(),
         attendees: [],
@@ -284,7 +291,7 @@ describe("BookingWebhookFactory", () => {
         customInputs: null,
         responses: {},
         userFieldsResponses: {},
-        smsReminderNumber: null,
+        smsReminderNumber: undefined,
         iCalUID: null,
         organizer: createTestOrganizer(),
         attendees: [],
@@ -308,7 +315,7 @@ describe("BookingWebhookFactory", () => {
         customInputs: null,
         responses: {},
         userFieldsResponses: {},
-        smsReminderNumber: null,
+        smsReminderNumber: undefined,
         iCalUID: null,
         organizer: createTestOrganizer(),
         attendees: [],
