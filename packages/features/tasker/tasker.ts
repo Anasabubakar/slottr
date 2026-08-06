@@ -1,6 +1,8 @@
 import type { z } from "zod";
 
-type BookingAuditTaskConsumerPayload = string;
+type BookingAuditTaskConsumerPayload = z.infer<
+  typeof import("@calcom/features/booking-audit/lib/types/bookingAuditTask").BookingAuditTaskConsumerSchema
+>;
 
 export type TaskerTypes = "internal" | "redis";
 type TaskPayloads = {

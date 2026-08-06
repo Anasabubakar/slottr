@@ -1,7 +1,17 @@
-import type { OutOfOfficeRenderProps } from "@calcom/features/calendars/weeklyview/types/state";
 import ServerTrans from "@calcom/lib/components/ServerTrans";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import classNames from "@calcom/ui/classNames";
+
+interface OutOfOfficeRenderProps {
+  fromUser?: { displayName?: string | null } | null;
+  toUser?: { displayName?: string | null } | null;
+  emoji?: string;
+  reason?: string | null;
+  borderDashed?: boolean;
+  className?: string;
+  notes?: string | null;
+  showNotePublicly?: boolean;
+}
 
 export function DefaultOutOfOfficeSlot(props: OutOfOfficeRenderProps) {
   const { t } = useLocale();

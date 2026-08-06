@@ -8,15 +8,15 @@ import {
   mockCalendarToHaveNoBusySlots,
   mockCalendarToCrashOnGetAvailability,
   BookingLocations,
-} from "@calcom/testing/lib/bookingScenario/bookingScenario";
-import { getMockRequestDataForBooking } from "@calcom/testing/lib/bookingScenario/getMockRequestDataForBooking";
-import { setupAndTeardown } from "@calcom/testing/lib/bookingScenario/setupAndTeardown";
+} from "@calcom/testing/src/lib/bookingScenario/bookingScenario";
+import { getMockRequestDataForBooking } from "@calcom/testing/src/lib/bookingScenario/getMockRequestDataForBooking";
+import { setupAndTeardown } from "@calcom/testing/src/lib/bookingScenario/setupAndTeardown";
 
 import { describe, expect, vi } from "vitest";
 
 import { prisma } from "@calcom/prisma";
 import { WatchlistType, BookingStatus } from "@calcom/prisma/enums";
-import { test } from "@calcom/testing/lib/fixtures/fixtures";
+import { test } from "@calcom/testing/src/lib/fixtures/fixtures";
 
 import { getNewBookingHandler } from "./getNewBookingHandler";
 
@@ -33,7 +33,6 @@ const createTestWatchlistEntry = async (overrides: {
       type: overrides.type,
       value: overrides.value,
       action: overrides.action,
-      createdById: 0,
       organizationId: overrides.organizationId,
       isGlobal: overrides.organizationId !== null ? false : true,
     },
@@ -148,7 +147,7 @@ describe("handleNewBooking - Spam Detection", () => {
         });
 
         expectDecoyBookingResponse(createdBooking);
-        expect(createdBooking.attendees[0].email).toBe(blockedEmail);
+        expect(createdBooking.attendees![0].email).toBe(blockedEmail);
         await expectNoBookingInDatabase(blockedEmail);
       },
       timeout
@@ -291,7 +290,7 @@ describe("handleNewBooking - Spam Detection", () => {
         });
 
         expectDecoyBookingResponse(createdBooking);
-        expect(createdBooking.attendees[0].email).toBe(blockedEmail);
+        expect(createdBooking.attendees![0].email).toBe(blockedEmail);
         await expectNoBookingInDatabase(blockedEmail);
       },
       timeout
@@ -362,7 +361,10 @@ describe("handleNewBooking - Spam Detection", () => {
         const originalIsBlocked = spamCheckService["isBlocked"].bind(spamCheckService);
 
         // Use vi.spyOn to mock the private method
-        const isBlockedSpy = vi.spyOn(spamCheckService as never, "isBlocked");
+        const isBlockedSpy = vi.spyOn(
+          spamCheckService as unknown as Record<string, (...args: unknown[]) => unknown>,
+          "isBlocked"
+        );
         isBlockedSpy.mockRejectedValue(new Error("Database connection failed"));
 
         try {
@@ -374,7 +376,7 @@ describe("handleNewBooking - Spam Detection", () => {
           expect(createdBooking).not.toHaveProperty("isShortCircuitedBooking");
           expect(createdBooking.status).toBe(BookingStatus.ACCEPTED);
           expect(createdBooking.id).not.toBe(0);
-          expect(createdBooking.attendees[0].email).toBe(bookerEmail);
+          expect(createdBooking.attendees![0].email).toBe(bookerEmail);
         } finally {
           // Restore original implementation and clean up spy
           isBlockedSpy.mockRestore();

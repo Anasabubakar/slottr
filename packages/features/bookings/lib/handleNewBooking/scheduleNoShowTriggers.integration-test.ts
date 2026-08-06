@@ -95,8 +95,9 @@ describe("scheduleNoShowTriggers Integration", () => {
 
   test("scheduling a webhook creates the correct Tasker jobs for no-show webhooks", async () => {
     const currentDate = new Date("2023-01-01T10:00:00.000Z");
-    const bookingData: Partial<Booking> & { startTime: Date; id: number; location: string } = {
+    const bookingData: Partial<Booking> & { startTime: Date; id: number; location: string; uid: string } = {
       id: testBookingIds[0],
+      uid: `test-uid-${testBookingIds[0]}`,
       startTime: currentDate,
       endTime: new Date("2023-01-01T10:30:00.000Z"),
       location: DailyLocationType,
@@ -126,8 +127,9 @@ describe("scheduleNoShowTriggers Integration", () => {
 
   test("created task payloads for no-show webhooks are correct", async () => {
     const currentDate = new Date("2023-01-01T11:00:00.000Z");
-    const bookingData: Partial<Booking> & { startTime: Date; id: number; location: string } = {
+    const bookingData: Partial<Booking> & { startTime: Date; id: number; location: string; uid: string } = {
       id: testBookingIds[1],
+      uid: `test-uid-${testBookingIds[1]}`,
       startTime: currentDate,
       endTime: new Date("2023-01-01T11:30:00.000Z"),
       location: DailyLocationType,

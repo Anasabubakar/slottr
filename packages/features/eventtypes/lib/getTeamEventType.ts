@@ -1,5 +1,5 @@
 import { prisma } from "@calcom/prisma";
-import { getPublicEventSelect } from "./getPublicEvent";
+import { getPublicEventSelect, getSlugOrRequestedSlug } from "./getPublicEvent";
 
 export async function getTeamEventType(teamSlug: string, meetingSlug: string, orgSlug: string | null) {
   return await prisma.eventType.findFirst({

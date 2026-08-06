@@ -15,7 +15,7 @@ export class MockFeaturesRepository implements IFeaturesRepository {
   }
 
   async checkIfTeamHasFeature(_teamId: number, slug: FeatureId) {
-    return slug === "mock-feature";
+    return (slug as string) === "mock-feature";
   }
 
   async checkIfFeatureIsEnabledGlobally(_slug: FeatureId) {

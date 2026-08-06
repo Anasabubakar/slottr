@@ -1,7 +1,7 @@
 import { prisma } from "@calcom/prisma";
 import type { PrismaClient } from "@calcom/prisma";
 import { CancellationReasonRequirement } from "@calcom/prisma/enums";
-import i18nMock from "@calcom/testing/lib/__mocks__/libServerI18n";
+import i18nMock from "@calcom/testing/src/lib/__mocks__/libServerI18n";
 
 // import { mockNoTranslations } from "@calcom/testing/lib/bookingScenario/bookingScenario";
 
@@ -14,7 +14,7 @@ export function mockNoTranslations() {
   i18nMock.getTranslation.mockImplementation(() => {
     return new Promise((resolve) => {
       const identityFn = (key: string) => key;
-      resolve(identityFn);
+      resolve(identityFn as unknown as Awaited<ReturnType<typeof i18nMock.getTranslation>>);
     });
   });
 }

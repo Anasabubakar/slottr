@@ -37,7 +37,7 @@ class PermissionCheckService {
     return [];
   }
 }
-const getSlugOrRequestedSlug = (slug: string) => ({ slug });
+export const getSlugOrRequestedSlug = (slug: string) => ({ slug });
 const getBookerBaseUrlSync = (_orgSlug?: string | number | null): string =>
   process.env.NEXT_PUBLIC_WEBAPP_URL || "https://app.cal.com";
 
