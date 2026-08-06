@@ -2,9 +2,10 @@
   "extends": "@calcom/tsconfig/base.json",
   "compilerOptions": {
     "target": "es5",
+    "lib": ["ES2021", "DOM", "DOM.Iterable", "ScriptHost"],
     "jsx": "preserve",
     "resolveJsonModule": true
   },
-  "include": [".", "../types/next-auth.d.ts", "../types/window.d.ts"],
+  "include": [".", "../types/next-auth.d.ts", "../types/window.d.ts", "../types/business-days-plugin.d.ts"],
   "exclude": ["dist", "build", "**/node_modules/**"]
 }

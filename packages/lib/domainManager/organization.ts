@@ -1,4 +1,5 @@
 import process from "node:process";
+import { WEBSITE_URL } from "@calcom/lib/constants";
 import logger from "@calcom/lib/logger";
 import { addDnsRecord, deleteDnsRecord } from "./deploymentServices/cloudflare";
 import {
@@ -7,6 +8,8 @@ import {
 } from "./deploymentServices/vercel";
 
 const log = logger.getSubLogger({ prefix: ["domainManager/organization"] });
+
+const subdomainSuffix = () => new URL(WEBSITE_URL).hostname;
 export const deleteDomain = async (slug: string) => {
   const domain = `${slug}.${subdomainSuffix()}`;
   // We must have some domain deleted

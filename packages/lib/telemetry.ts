@@ -36,35 +36,6 @@ export function collectPageParameters(
 }
 
 
-export const nextCollectBasicSettings: CollectOpts = {
-  drivers: [
-    process.env.CALCOM_TELEMETRY_DISABLED === "1" || process.env.NEXT_PUBLIC_IS_E2E === "1"
-      ? undefined
-      : {
-          type: "jitsu",
-          opts: {
-            key: "s2s.2pvs2bbpqq1zxna97wcml.esb6cikfrf7yn0qoh1nj1",
-            server: "https://t.calendso.com",
-          },
-        },
-    process.env.TELEMETRY_DEBUG && { type: "echo", opts: { disableColor: true } },
-  ],
-  eventTypes: [
-    { "*.ttf": null },
-    { "*.webmanifest": null },
-    { "*.json": null },
-    { "*.svg": null },
-    { "*.map": null },
-    { "*.png": null },
-    { "*.gif": null },
-    { "/api/collect-events": null },
-    { "/api*": null },
-    { "/img*": null },
-    { "/favicon*": null },
-    { "/*": telemetryEventTypes.pageView },
-  ],
-};
-
 export const extendEventData = (
   req: NextRequest | NextApiRequest,
   res: NextResponse | NextApiResponse,
