@@ -33,11 +33,11 @@ export const WEBAPP_URL_FOR_OAUTH = IS_PRODUCTION || IS_DEV ? WEBAPP_URL : "http
 
 /** @deprecated use `WEBAPP_URL` */
 export const BASE_URL = WEBAPP_URL;
-export const WEBSITE_URL = ensureProtocol(process.env.NEXT_PUBLIC_WEBSITE_URL) || "https://TODO-your-domain.example";
+export const WEBSITE_URL = ensureProtocol(process.env.NEXT_PUBLIC_WEBSITE_URL) || WEBAPP_URL;
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Slottr";
-export const SUPPORT_MAIL_ADDRESS = process.env.NEXT_PUBLIC_SUPPORT_MAIL_ADDRESS || "support@TODO-your-domain.example";
+export const SUPPORT_MAIL_ADDRESS = process.env.NEXT_PUBLIC_SUPPORT_MAIL_ADDRESS || `support@${new URL(WEBAPP_URL).hostname}`;
 export const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME || "Slottr";
-export const SENDER_ID = process.env.NEXT_PUBLIC_SENDER_ID || "TODO_ID";
+export const SENDER_ID = process.env.NEXT_PUBLIC_SENDER_ID || "Slottr";
 export const SENDER_NAME = process.env.NEXT_PUBLIC_SENDGRID_SENDER_NAME || "Slottr";
 export const EMAIL_FROM_NAME = process.env.EMAIL_FROM_NAME || APP_NAME;
 
@@ -107,12 +107,12 @@ export const APPLE_TOUCH_ICON = "/apple-touch-icon.png";
 export const MSTILE_ICON = "/mstile-150x150.png";
 export const ANDROID_CHROME_ICON_192 = "/android-chrome-192x192.png";
 export const ANDROID_CHROME_ICON_256 = "/android-chrome-256x256.png";
-export const ROADMAP = "https://TODO-your-domain.example/roadmap";
-export const DESKTOP_APP_LINK = "https://TODO-your-domain.example/download";
-export const JOIN_COMMUNITY = "https://TODO-your-domain.example/community";
-export const POWERED_BY_URL = "https://TODO-your-domain.example";
-export const DOCS_URL = "https://TODO-your-domain.example/docs";
-export const DEVELOPER_DOCS = "https://TODO-your-domain.example/docs/developer";
+export const ROADMAP = `${WEBAPP_URL}/roadmap`;
+export const DESKTOP_APP_LINK = `${WEBAPP_URL}/download`;
+export const JOIN_COMMUNITY = `${WEBAPP_URL}/community`;
+export const POWERED_BY_URL = WEBAPP_URL;
+export const DOCS_URL = `${WEBAPP_URL}/docs`;
+export const DEVELOPER_DOCS = `${WEBAPP_URL}/docs/developer`;
 export const SEO_IMG_DEFAULT = `${CAL_URL}/og-image.png`;
 // The Dynamic OG Image is passed through Next's Image API to further optimize it.
 // This results in a 80% smaller image 🤯. It is however important that for the query
@@ -190,8 +190,8 @@ export const ORG_MINIMUM_PUBLISHED_TEAMS_SELF_SERVE_HELPER_DIALOGUE = 1;
 // is intentionally blank; only used by admin self-hosted-license-key/coupon creation flows.
 export const CALCOM_PRIVATE_API_ROUTE = process.env.CALCOM_PRIVATE_API_ROUTE || "";
 export const WEBSITE_PRIVACY_POLICY_URL =
-  process.env.NEXT_PUBLIC_WEBSITE_PRIVACY_POLICY_URL || "https://TODO-your-domain.example/privacy";
-export const WEBSITE_TERMS_URL = process.env.NEXT_PUBLIC_WEBSITE_TERMS_URL || "https://TODO-your-domain.example/terms";
+  process.env.NEXT_PUBLIC_WEBSITE_PRIVACY_POLICY_URL || `${WEBAPP_URL}/privacy-policy`;
+export const WEBSITE_TERMS_URL = process.env.NEXT_PUBLIC_WEBSITE_TERMS_URL || `${WEBAPP_URL}/terms-of-service`;
 export const LINGO_DOT_DEV_API_KEY = process.env.LINGO_DOT_DEV_API_KEY;
 
 /**

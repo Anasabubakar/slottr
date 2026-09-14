@@ -26,7 +26,7 @@ export default function Credits() {
           {CalComVersion}
           {vercelCommitHash && IS_CALCOM ? (
             <Link
-              href={`https://TODO-your-domain.example/repo/commit/${vercelCommitHash}`}
+              href={`https://github.com/Anasabubakar/slottr/commit/${vercelCommitHash}`}
               target="_blank"
               className="hover:underline">
               {commitHash}
