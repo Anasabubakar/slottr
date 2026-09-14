@@ -11,6 +11,7 @@ import { ErrorCode } from "@calcom/features/auth/lib/ErrorCode";
 import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
 import { verifyPassword } from "@calcom/features/auth/lib/verifyPassword";
 import { checkRateLimitAndThrowError } from "@calcom/lib/checkRateLimitAndThrowError";
+import { APP_NAME } from "@calcom/lib/constants";
 import { symmetricEncrypt } from "@calcom/lib/crypto";
 import prisma from "@calcom/prisma";
 import { IdentityProvider } from "@calcom/prisma/enums";
@@ -83,7 +84,7 @@ async function postHandler(req: NextRequest) {
   });
 
   const name = user.email || user.username || user.id.toString();
-  const keyUri = authenticator.keyuri(name, "Cal", secret);
+  const keyUri = authenticator.keyuri(name, APP_NAME, secret);
   const dataUri = await qrcode.toDataURL(keyUri);
 
   return NextResponse.json({ secret, keyUri, dataUri, backupCodes });
