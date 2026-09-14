@@ -1,5 +1,5 @@
 databases:
   - name: slottr-db
-    plan: starter
+    plan: basic-256mb
     databaseName: app_db
     user: unicorn_user
