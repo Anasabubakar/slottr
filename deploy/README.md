@@ -22,3 +22,14 @@ Slottr runs at https://slottr.anasmasama.dev.
    `GOOGLE_LOGIN_ENABLED=true`.
 5. Deploy, then create a public event type, complete a test booking, and
    confirm the calendar event and email notifications arrive.
+
+### Cron jobs on Vercel Hobby plan
+
+Vercel's Hobby plan allows at most 2 cron jobs per project, running once per
+day. `apps/web/vercel.json` is trimmed to the 2 daily cleanup crons
+(`calendar-subscriptions-cleanup`, `tasks/cleanup`) to fit this limit. The
+higher-frequency crons this app normally relies on — calendar subscription
+refresh, task processing, credential refresh, selected-calendars sync, all
+originally every 1-5 minutes — are disabled and **will not run** until you
+upgrade to Vercel Pro and restore them (see git history for the original
+`crons` array in this file).
