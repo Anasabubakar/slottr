@@ -1,0 +1,5 @@
+databases:
+  - name: slottr-db
+    plan: starter
+    databaseName: app_db
+    user: unicorn_user
