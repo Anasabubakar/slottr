@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "TODO_GITHUB_ORG/TODO_REPO_NAME" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "Anasabubakar/slottr" }],
   "commit": false,
   "fixed": [],
   "linked": [],

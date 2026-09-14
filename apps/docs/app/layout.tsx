@@ -79,7 +79,7 @@ export default async function RootLayout({
         <Layout
           navbar={navbar}
           pageMap={await getPageMap()}
-          docsRepositoryBase="TODO_REPOSITORY_URL/tree/main/apps/docs"
+          docsRepositoryBase="https://github.com/Anasabubakar/slottr/tree/main/apps/docs"
           footer={footer}
         >
           {children}

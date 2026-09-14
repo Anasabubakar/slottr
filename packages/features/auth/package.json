@@ -3,7 +3,7 @@
   "sideEffects": false,
   "private": true,
   "description": "Slottr's main auth code",
-  "authors": "TODO_YOUR_NAME",
+  "authors": "Anas Abubakar",
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {

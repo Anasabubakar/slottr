@@ -1,8 +1,8 @@
 {
   "name": "Slottr",
   "description": "Open Source Scheduling",
-  "repository": "TODO_REPOSITORY_URL",
-  "logo": "TODO_LOGO_URL",
+  "repository": "https://github.com/Anasabubakar/slottr",
+  "logo": "https://slottr.anasmasama.dev/api/logo?type=icon",
   "keywords": ["react", "typescript", "node", "nextjs", "prisma", "postgres", "trpc"],
   "addons": [
     {

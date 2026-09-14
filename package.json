@@ -2,9 +2,9 @@
   "name": "slottr-monorepo",
   "version": "0.0.0",
   "private": true,
-  "author": "TODO_YOUR_NAME",
+  "author": "Anas Abubakar",
   "license": "MIT",
-  "repository": "TODO_REPOSITORY_URL",
+  "repository": "https://github.com/Anasabubakar/slottr",
   "workspaces": [
     "apps/*",
     "apps/api/*",

@@ -2,7 +2,7 @@
   "name": "@calcom/realtime",
   "version": "0.0.1",
   "description": "Lightweight WebSocket relay that notifies embed widgets when a booking page owner's calendar availability may have changed",
-  "author": "TODO_YOUR_NAME",
+  "author": "Anas Abubakar",
   "license": "MIT",
   "private": true,
   "main": "./dist/server.js",

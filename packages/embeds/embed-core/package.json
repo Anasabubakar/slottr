@@ -7,7 +7,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "TODO_REPOSITORY_URL",
+    "url": "https://github.com/Anasabubakar/slottr",
     "directory": "packages/embeds/embed-core"
   },
   "scripts": {
