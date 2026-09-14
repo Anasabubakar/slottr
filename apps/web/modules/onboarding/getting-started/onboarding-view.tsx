@@ -1,5 +1,6 @@
 "use client";
 
+import { IS_TEAM_BILLING_ENABLED_CLIENT } from "@calcom/lib/constants";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import classNames from "@calcom/ui/classNames";
 import { Badge } from "@calcom/ui/components/badge";
@@ -118,10 +119,13 @@ export const OnboardingView = ({ userEmail }: OnboardingViewProps) => {
     },
   ];
 
-  // Only show organization plan for company emails
+  // Team and organization plans require billing, which isn't configured on self-hosted instances
   const plans = allPlans.filter((plan) => {
     if (plan.id === "organization") {
       return false;
+    }
+    if (plan.id === "team") {
+      return IS_TEAM_BILLING_ENABLED_CLIENT;
     }
     return true;
   });
