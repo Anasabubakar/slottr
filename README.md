@@ -8,9 +8,9 @@
   <p align="center">
     An independent, open-source scheduling platform.
     <br />
-    <a href="TODO_REPOSITORY_URL"><strong>GitHub</strong></a>
+    <a href="https://github.com/Anasabubakar/slottr"><strong>GitHub</strong></a>
     <br />
-    <a href="TODO_REPOSITORY_URL/issues">Issues</a>
+    <a href="https://github.com/Anasabubakar/slottr/issues">Issues</a>
     &middot;
     <a href="./CONTRIBUTING.md">Contributing</a>
   </p>
@@ -66,14 +66,14 @@ Here’s what you need to run Slottr.
 
 ### Setup
 
-1. Clone the repo (TODO_REPOSITORY_URL)
+1. Clone the repo (https://github.com/Anasabubakar/slottr)
 
    ```sh
-   git clone TODO_REPOSITORY_URL.git
+   git clone https://github.com/Anasabubakar/slottr.git
    ```
 
    > If you are on Windows, run the following command in Git Bash with admin privileges:
-   > `git clone -c core.symlinks=true TODO_REPOSITORY_URL.git`
+   > `git clone -c core.symlinks=true https://github.com/Anasabubakar/slottr.git`
 
 2. Go to the project folder
 
@@ -356,7 +356,7 @@ Note: `docker compose` without the hyphen is now the primary method of using doc
 1. Clone the repository
 
    ```bash
-   git clone --recursive TODO_REPOSITORY_URL.git
+   git clone --recursive https://github.com/Anasabubakar/slottr.git
    ```
 
 2. Change into the directory
@@ -481,7 +481,7 @@ Note: `docker compose` without the hyphen is now the primary method of using doc
 1. Clone the repository
 
    ```bash
-   git clone TODO_REPOSITORY_URL.git
+   git clone https://github.com/Anasabubakar/slottr.git
    ```
 
 2. Change into the directory
@@ -601,7 +601,7 @@ docker-calcom-1  | @calcom/web:start:   message: 'request to http://testing.loca
 docker-calcom-1  | @calcom/web:start: }
 ```
 
-TODO: The one-click deploy buttons for Railway, Northflank, Vercel, Render, and Elestio were removed here because they pointed to Cal.com/Cal.diy's own templates and repos, which would deploy the wrong codebase. Once this project has its own repository and (optionally) platform templates, add fresh deploy buttons pointing at TODO_REPOSITORY_URL.
+TODO: The one-click deploy buttons for Railway, Northflank, Vercel, Render, and Elestio were removed here because they pointed to Cal.com/Cal.diy's own templates and repos, which would deploy the wrong codebase. Once this project has its own repository and (optionally) platform templates, add fresh deploy buttons pointing at https://github.com/Anasabubakar/slottr.
 
 Currently Vercel Pro Plan is required to be able to Deploy this application with Vercel, due to limitations on the number of serverless functions on the free plan.
 
@@ -762,14 +762,14 @@ Even small improvements matter — thank you for helping us grow!
 
 ### Good First Issues
 
-We have a list of [help wanted](TODO_REPOSITORY_URL/issues) that contain small features and bugs which have a relatively limited scope. This is a great place to get started, gain experience, and get familiar with our contribution process.
+We have a list of [help wanted](https://github.com/Anasabubakar/slottr/issues) that contain small features and bugs which have a relatively limited scope. This is a great place to get started, gain experience, and get familiar with our contribution process.
 
 <!-- CONTRIBUTORS -->
 
 ### Contributors
 
-<a href="TODO_REPOSITORY_URL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=TODO_GITHUB_ORG/TODO_REPO_NAME" />
+<a href="https://github.com/Anasabubakar/slottr/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Anasabubakar/slottr" />
 </a>
 
 <!-- TRANSLATIONS -->

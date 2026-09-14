@@ -1,6 +1,6 @@
 # Security
 
-Contact: [security@TODO-your-domain.example](mailto:security@TODO-your-domain.example)
+Contact: [anasabubakar7000@gmail.com](mailto:anasabubakar7000@gmail.com)
 
 Based on [https://supabase.com/.well-known/security.txt](https://supabase.com/.well-known/security.txt)
 
@@ -27,7 +27,7 @@ better protect our clients and our systems.
 
 ## Please do the following
 
-- E-mail your findings to [security@TODO-your-domain.example](mailto:security@TODO-your-domain.example).
+- E-mail your findings to [anasabubakar7000@gmail.com](mailto:anasabubakar7000@gmail.com).
 - Do not run automated scanners on our infrastructure or dashboard. If you wish
   to do this, contact us and we will set up a sandbox for you.
 - Do not take advantage of the vulnerability or problem you have discovered,
