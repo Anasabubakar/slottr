@@ -3,3 +3,65 @@ databases:
     plan: basic-256mb
     databaseName: app_db
     user: unicorn_user
+
+services:
+  - type: web
+    name: slottr-api-v2
+    runtime: docker
+    dockerfilePath: ./apps/api/v2/Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_PORT
+        value: "80"
+      # Set to the public URL of this service once known (Render dashboard shows it after first deploy).
+      - key: API_URL
+        value: https://slottr-api-v2.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: slottr-db
+          property: connectionString
+      - key: DATABASE_DIRECT_URL
+        fromDatabase:
+          name: slottr-db
+          property: connectionString
+      - key: DATABASE_READ_URL
+        fromDatabase:
+          name: slottr-db
+          property: connectionString
+      - key: DATABASE_WRITE_URL
+        fromDatabase:
+          name: slottr-db
+          property: connectionString
+      # Free Redis (e.g. Upstash free tier) — set manually in the Render dashboard.
+      - key: REDIS_URL
+        sync: false
+      # Must match the main web app's NEXTAUTH_SECRET exactly (set manually in dashboard to the same value as the Vercel project).
+      - key: NEXTAUTH_SECRET
+        sync: false
+      # Must match the main web app's CALENDSO_ENCRYPTION_KEY exactly.
+      - key: CALENDSO_ENCRYPTION_KEY
+        sync: false
+      - key: CALCOM_SERVICE_ACCOUNT_ENCRYPTION_KEY
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+      - key: API_KEY_PREFIX
+        value: cal_
+      - key: REWRITE_API_V2_PREFIX
+        value: "1"
+      - key: IS_E2E
+        value: "false"
+      - key: WEB_APP_URL
+        value: https://slottr.anasmasama.dev/
+      - key: LOGGER_BRIDGE_LOG_LEVEL
+        value: "1"
+      - key: ENABLE_ASYNC_TASKER
+        value: "false"
+      # Not using Stripe billing; dummy values satisfy required-var checks.
+      - key: STRIPE_API_KEY
+        value: sk_test_dummy_not_used
+      - key: STRIPE_WEBHOOK_SECRET
+        value: whsec_dummy_not_used

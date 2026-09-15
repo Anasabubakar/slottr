@@ -23,6 +23,44 @@ Slottr runs at https://slottr.anasmasama.dev.
 5. Deploy, then create a public event type, complete a test booking, and
    confirm the calendar event and email notifications arrive.
 
+## API v2 (REST API) on Render — free tier
+
+The public REST API (`apps/api/v2`, a NestJS service) is not part of the
+Vercel web deployment above — it's a separate long-running Docker service,
+provisioned via the same `render.yaml` Blueprint as `slottr-api-v2`. To keep
+this at zero cost:
+
+- The web service uses Render's **free** plan (sleeps after ~15 min of
+  inactivity; the first request after sleeping takes a few seconds to wake up
+  — fine for a personal/portfolio use case, not for production traffic).
+- Redis is **not** provisioned on Render (no free tier there). Use
+  [Upstash](https://upstash.com) instead — it has a free tier well within
+  what this needs (low request volume, no persistence requirements beyond
+  caching).
+
+Steps:
+
+1. Sign up free at upstash.com → create a Redis database (any nearby region)
+   → copy its `rediss://...` connection string (use the TLS one).
+2. In the Render dashboard, re-sync the Blueprint used for `slottr-db` so it
+   picks up the new `slottr-api-v2` service from `render.yaml`, or create it
+   via New → Blueprint pointing at this repo.
+3. On the `slottr-api-v2` service, manually set three env vars in the Render
+   dashboard (marked `sync: false` in render.yaml):
+   - `REDIS_URL` — the Upstash connection string from step 1.
+   - `NEXTAUTH_SECRET` — copy the exact value from the Vercel project's env vars.
+   - `CALENDSO_ENCRYPTION_KEY` — copy the exact value from the Vercel project's env vars.
+4. Deploy. Once live, note the public Render URL (e.g.
+   `https://slottr-api-v2.onrender.com`) and update the `API_URL` env var to
+   match it exactly, then redeploy.
+5. Verify: `curl -H "Authorization: Bearer <your cal_ API key>" https://<render-url>/api/v2/me`
+   should return your account JSON, not a 401/500. Generate an API key from
+   the web app at Settings → Developer → API Keys first if you don't have one.
+6. Optional, still free: point a custom subdomain (e.g. `api.anasmasama.dev`)
+   at this Render service via Render's custom domain settings + a CNAME at
+   your DNS provider, then update `API_URL` and `NEXT_PUBLIC_API_V2_URL` (on
+   the Vercel web app) accordingly.
+
 ### Cron jobs on Vercel Hobby plan
 
 Vercel's Hobby plan allows at most 2 cron jobs per project, running once per
