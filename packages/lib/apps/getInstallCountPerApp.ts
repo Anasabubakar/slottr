@@ -1,4 +1,3 @@
-import { unstable_cache } from "next/cache";
 import { z } from "zod";
 
 import prisma from "@calcom/prisma";
@@ -29,10 +28,10 @@ const computeInstallCountsFromDB = async (): Promise<Record<string, number>> => 
 };
 
 const getInstallCountPerApp = async (): Promise<Record<string, number>> => {
-  return unstable_cache(async () => computeInstallCountsFromDB(), ["app-install-counts"], {
-    revalidate: 300,
-    tags: ["app-install-counts"],
-  })();
+  // unstable_cache from next/cache requires an App Router incremental-cache context,
+  // but this is also reached from Pages Router API routes (pages/api/trpc/apps/[trpc].ts),
+  // where it throws "incrementalCache missing". Compute directly instead.
+  return computeInstallCountsFromDB();
 };
 
 export default getInstallCountPerApp;
