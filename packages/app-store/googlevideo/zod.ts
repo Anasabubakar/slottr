@@ -2,14 +2,7 @@ import { z } from "zod";
 
 export const appDataSchema = z.object({});
 
-export const appKeysSchema = z.object({
-  client_id: z.string().min(1),
-  client_secret: z.string().min(1),
-  redirect_uris: z.union([
-    z.string().url().array(),
-    z
-      .string()
-      .url()
-      .transform((url) => [url]),
-  ]),
-});
+// Google Meet reuses the Google Calendar OAuth credential (see dependencies:
+// ["google-calendar"] in _metadata.ts) rather than needing its own client
+// id/secret, so this app has no keys of its own to configure.
+export const appKeysSchema = z.object({});
