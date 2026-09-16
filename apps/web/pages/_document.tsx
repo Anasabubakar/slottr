@@ -88,6 +88,10 @@ class MyDocument extends Document<Props> {
             isEmbed
               ? {
                   background: "transparent",
+                  // The parent embed script sizes the iframe to the document. Hiding
+                  // viewport overflow prevents Chromium from reserving a white
+                  // scrollbar gutter around an otherwise transparent embed.
+                  overflow: "hidden",
                   // Keep the embed hidden till parent initializes and
                   // - gives it the appropriate styles if UI instruction is there.
                   // - gives iframe the appropriate height(equal to document height) which can only be known after loading the page once in browser.
