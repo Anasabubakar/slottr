@@ -1,6 +1,5 @@
 import process from "node:process";
 import BookingPageTagManager from "@calcom/app-store/BookingPageTagManager";
-import { useIsPlatformBookerEmbed } from "@calcom/atoms/hooks/useIsPlatformBookerEmbed";
 import dayjs from "@calcom/dayjs";
 import { useEmbedUiConfig } from "@calcom/embed-core/embed-iframe";
 import { updateEmbedBookerState } from "@calcom/embed-core/src/embed-iframe";
@@ -55,7 +54,6 @@ import { VerifyCodeDialog } from "./VerifyCodeDialog";
 const BookerComponent = ({
   username,
   eventSlug,
-  hideBranding = false,
   entity,
   onOverlayClickNoCalendar,
   onClickOverlayContinue,
@@ -89,7 +87,6 @@ const BookerComponent = ({
   showNoAvailabilityDialog,
 }: BookerProps & WrappedBookerProps): JSX.Element | null => {
   const searchParams = useCompatSearchParams();
-  const isPlatformBookerEmbed = useIsPlatformBookerEmbed();
   const [bookerState, setBookerState] = useBookerStoreContext(
     (state) => [state.state, state.setState],
     shallow
@@ -104,7 +101,6 @@ const BookerComponent = ({
 
   const {
     shouldShowFormInDialog,
-    hasDarkBackground,
     extraDays,
     columnViewExtraDays,
     isMobile,
@@ -550,18 +546,6 @@ const BookerComponent = ({
               }}
             />
           </div>
-        )}
-
-        {!hideBranding && (!isPlatform || isPlatformBookerEmbed) && !shouldRenderCaptcha && (
-          <m.span
-            key="logo"
-            className={classNames(
-              "mb-6 mt-auto pt-6 [&_img]:h-[15px]",
-              hasDarkBackground ? "dark" : "",
-              layout === BookerLayouts.MONTH_VIEW ? "block" : "hidden"
-            )}>
-            {null}
-          </m.span>
         )}
       </div>
       <>
